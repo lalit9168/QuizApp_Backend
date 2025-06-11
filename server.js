@@ -23,6 +23,10 @@ mongoose
   .catch(err => console.error('❌ MongoDB Connection Error:', err));
 
 // Routes
+app.get('/', (req, res) => {
+  res.send('Hey you are not allowed to be here!!');
+});
+
 app.use('/api', authRoutes);
 
 app.use('/api/quizzes', quizRoutes);
