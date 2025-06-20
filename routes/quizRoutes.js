@@ -3,6 +3,7 @@ import * as quizController from "../controllers/quiz.controller.js";
 
 const router = express.Router();
 
+
 // Improved logger middleware
 function logger(req, res, next) {
   const start = Date.now();  // Capture the time when the request starts

@@ -3,7 +3,10 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import authRoutes from './routes/auth.js'; // make sure this file exists
 import quizRoutes from './routes/quizRoutes.js';
-import guestQuizzes from './routes/guestQuizzes.js'
+import guestQuizzes from './routes/guestQuizzes.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 
 
@@ -15,7 +18,8 @@ app.use(express.json());
 
 // MongoDB Connection
 mongoose
-  .connect('mongodb+srv://lalitchaudhari003:4fAUKI8tIegedOWC@cluster0.3mz88qq.mongodb.net/quizApp?retryWrites=true&w=majority&appName=Cluster0', {
+  // .connect('mongodb+srv://lalitchaudhari003:4fAUKI8tIegedOWC@cluster0.3mz88qq.mongodb.net/quizApp?retryWrites=true&w=majority&appName=Cluster0', {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

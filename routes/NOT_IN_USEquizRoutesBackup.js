@@ -83,7 +83,7 @@ router.get("/code/:quizCode", async (req, res) => {
   }
 });
 
-// Submit quiz attempt (user)
+// Submit quiz attempt (user)  submit to backend attempted quiz.jsx
 router.post("/submit/:quizCode", async (req, res) => {
   const { quizCode } = req.params;
   const { token, score, selectedAnswers, name, address, education } = req.body;

@@ -79,6 +79,8 @@ export async function getAllQuizzes(req, res) {
 // Get quiz by quiz code
 export async function getQuizByCode(req, res) {
   try {
+    // const token = req.headers.authorization?.split(" ")[1];
+    // if (!token) return res.status(401).json({ message: "Unauthorized" });
     const { quizCode } = req.params;
     const quiz = await Quiz.findOne({ quizCode });
     if (!quiz) return res.status(404).json({ message: "Quiz not found" });
@@ -162,7 +164,7 @@ export async function getAllSubmissions(req, res) {
   }
 }
 
-// Get submissions for a specific quiz (admin only)
+// Get submissions for a specific quiz (admin only) view single records of suer
 export async function getSubmissionsByQuiz(req, res) {
   try {
     verifyAdmin(req.headers.authorization?.split(" ")[1]);
@@ -235,7 +237,7 @@ export async function getUserHistory(req, res) {
   }
 }
 
-// Register quiz start time for a user
+// Register quiz start time for a user (user only)
 export async function startQuiz(req, res) {
   try {
     const { token } = req.body;
@@ -277,7 +279,7 @@ export async function startQuiz(req, res) {
   }
 }
 
-// Get attempted quizzes summary (all users)
+// Get attempted quizzes summary (all users) for admin only 
 export async function getAttemptedQuiz(req, res) {
   try {
     const quizzes = await Quiz.find({}, "quizCode title submissions.email");

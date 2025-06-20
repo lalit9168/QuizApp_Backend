@@ -75,7 +75,7 @@ router.post('/attempt/:quizCode', async (req, res) => {
   }
 });
 
-// Delete guest quiz
+// Delete guest quiz admin only 
 router.delete('/delete/:quizCode', async (req, res) => {
   try {
     const quiz = await GuestQuiz.findOneAndDelete({ quizCode: req.params.quizCode });
@@ -85,8 +85,8 @@ router.delete('/delete/:quizCode', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
-
-// View attempts by quizCode
+ 
+// View attempts by quizCode admin only 
 router.get('/attempts/:quizCode', async (req, res) => {
   try {
     const quiz = await GuestQuiz.findOne({ quizCode: req.params.quizCode });
